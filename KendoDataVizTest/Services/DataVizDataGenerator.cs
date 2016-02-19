@@ -8,6 +8,11 @@ namespace KendoDataVizTest.Services
 {
     public class DataVizDataGenerator : IDataVizDataGenerator
     {
+        private const float APointStep = 1.5f;
+        private const float BPointStep = 2f;
+        private const float CPointStep = 4f;
+        private const float progressLimit = 100f;
+
         public RadialGuageData GerRadialGuageValue(RadialGuageData data)
         {
             var rand = new Random();
@@ -39,6 +44,43 @@ namespace KendoDataVizTest.Services
                 {
                     data.CurrentValue = data.CurrentValue - downValue;
                 }
+            }
+
+            return data;
+        }
+
+        public LinearGuageData GetLinearGuageValue(LinearGuageData data)
+        {
+            if(data.PointA + APointStep > progressLimit)
+            {
+                data.PointA = progressLimit;
+            }
+            else
+            {
+                data.PointA = data.PointA + APointStep;
+            }
+
+            if (data.PointB + BPointStep > progressLimit)
+            {
+                data.PointB = progressLimit;
+            }
+            else
+            {
+                data.PointB = data.PointB + BPointStep;
+            }
+
+            if (data.PointC + CPointStep > progressLimit)
+            {
+                data.PointC = progressLimit;
+            }
+            else
+            {
+                data.PointC = data.PointC + CPointStep;
+            }
+
+            if(data.PointA == progressLimit && data.PointB == progressLimit && data.PointC == progressLimit)
+            {
+                data.LimitReached = true;
             }
 
             return data;

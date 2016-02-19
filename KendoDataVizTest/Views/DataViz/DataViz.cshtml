@@ -32,8 +32,18 @@
         </div>
 
     </div>
-    <div class="chart-block" data-bind="visible: linearGaugeIsVisible">
+    <div class="chart-block linear-block" data-bind="visible: linearGaugeIsVisible">
         <h2>Linear</h2>
+        <div class="k-content" style="display:inline-block; margin-top:100px;">
+            <span id="linear-progress" style="width:800px" data-role="lineargauge"
+                  data-scale="{ min:0, max: 100, minorUnit: 2, majorUnit: 10, vertical: false}"
+                  data-pointer="[{value: 0, color: '#c20000', shape: 'arrow'}, {value: 0, color: '#ff7a00'}, {value: 0, color: '#ffc700', margin:10}]"></span>
+        </div>
+        <div class="box-col radial-settings-button">
+            <button data-bind="click:startLinearProgress" class="btn btn-primary progres-control-button">Run progress</button>
+            <button data-bind="click:pauseLinearProgress" class="btn btn-primary progres-control-button">Pause Progress</button>
+            <button data-bind="click:resetLinearProgress" class="btn btn-primary progres-control-button">Reset Progress</button>
+        </div>
     </div>
 </div>
 

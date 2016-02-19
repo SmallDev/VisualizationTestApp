@@ -189,6 +189,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\RadialGuageData.cs" />
+    <Compile Include="Models\LinearGuageData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\DataVizDataGenerator.cs" />
     <Compile Include="Services\Interfaces\IDataVizDataGenerator.cs" />

@@ -30,5 +30,13 @@ namespace KendoDataVizTest.Controllers
 
             return Json(resultData);
         }
+
+        [HttpPost]
+        public ActionResult GetLinearGuageData(LinearGuageData lnData)
+        {
+            var resultData = _dataVizService.GetLinearGuageValue(lnData);
+
+            return Json(resultData);
+        }
     }
 }

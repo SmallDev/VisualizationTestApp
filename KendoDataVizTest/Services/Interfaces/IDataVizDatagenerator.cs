@@ -11,5 +11,7 @@ namespace KendoDataVizTest.Services
     {
         RadialGuageData GerRadialGuageValue(RadialGuageData data);
 
+        LinearGuageData GetLinearGuageValue(LinearGuageData data);
+
     }
 }
