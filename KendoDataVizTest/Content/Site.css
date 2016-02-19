@@ -1,0 +1,161 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+#main-container{
+    padding-top:5px;
+    min-height: 100%;
+    height: auto;
+    margin: 0 auto -60px;
+    padding: 0 0 60px;
+}
+
+.offer-nav{
+    height:50px;
+}
+
+.offer-nav-item{
+    border:solid;
+    border-color:grey;
+    border-width:0 0 0 2px;
+    padding-left:3px;
+    padding-right:3px;
+    margin-left:3px !important;
+    border-radius:10px;
+}
+
+.offer-logout-item {
+    border-width:0 2px 0 2px !important;
+}
+
+.offer-nav-last-item{
+    border-right-width:2px !important;
+}
+
+.log-out-nav{
+    display:block;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+
+#footer {
+  height: 60px;
+  background-color: #f5f5f5;
+}
+
+
+.edit-offer-label{
+    width: 100px;
+}
+
+.edit-offer-input{
+
+}
+
+ #offerEditForm li {
+    list-style: none;
+    padding-bottom: .7em;
+    text-align: left;
+}
+
+.k-invalid-msg {          
+    margin-left: 10px;
+}
+
+ .offer-date-input .k-invalid-msg {          
+    margin-left: 35px;
+}
+ 
+#edit-offer-block {
+    margin-left: 10%;
+    border: solid;
+    border-color: gray;
+    border-width: 1px;
+    border-radius: 10px;
+    width: 50%;
+    padding-top: 20px;
+}
+
+.edit-offer-title{
+    margin-left: 10%;
+}
+
+.chart-nav-block{
+    display: inline-block;
+}
+
+.charts-nav {
+    width:160px;
+}
+
+.report-nav-item {
+    cursor:pointer;
+}
+
+.chart-block{
+    text-align: center;
+}
+
+.offer-chart {
+    height: 500px;
+    width: 500px;
+    display: inline-block;
+}
+
+#data-viz-block{
+    text-align:center;
+    margin-top: 40px
+}
+
+ #gauge-container {
+    background: transparent url("gauge/gauge-container.png") no-repeat 50% 50%;
+    width: 404px;
+    height: 404px;
+    text-align: center;
+    margin: 0 auto 30px auto;
+}
+
+.gauge {
+    display: inline-block;
+    width: 330px;
+    height: 330px;
+    margin: 0 auto;
+}
+
+.radial-settings-block{
+    text-align:center;
+}
+
+.radial-settings-slider{
+    width:300px;
+    display:inline-block;
+}
+
+.radial-settings-button{
+    margin-top:50px;
+}

@@ -1,0 +1,45 @@
+﻿<h2>DataVizTest</h2>
+<div id="data-viz-block">
+    <div class="chart-nav-block">
+        <ul class="nav nav-pills charts-nav">
+            <li role="presentation" class="report-nav-item" data-bind="click: showRadialGauge, css: { active: radialGaugeIsVisible }"><a>Radial</a></li>
+            <li role="presentation" class="report-nav-item" data-bind="click: showLinearGauge, css: { active: linearGaugeIsVisible }"><a>Linear</a></li>
+        </ul>
+    </div>
+    <div class="chart-block" data-bind="visible: radialGaugeIsVisible">
+        <h2>Radial</h2>
+
+        <div id="gauge-container">
+            <span id="radial-gauge-mv" data-role="radialgauge"
+                  data-scale="{ min: 0, max: 100, minorUnit: 2, majorUnit: 10, ranges: [{from: 0, to: 100, color: '#006600'}]}"
+                  data-bind="visible: updateData,
+                             value: currentValue"
+                  data-pointer="{color: 'black'}"
+                  class="gauge"></span>
+        </div>
+        <div class="box radial-settings-block">
+            <div class="box-col radial-settings-slider">
+                <h4>Min Value</h4>
+                <input data-role="slider" data-min="0" data-max="50" data-show-buttons="false" data-small-step="5" data-large-step="10" data-bind="value: minValue, events: { change: onChangeMinValue }">
+            </div>
+            <div class="box-col radial-settings-slider">
+                <h4>Max Value</h4>
+                <input data-role="slider" data-min="50" data-max="100" data-show-buttons="false" data-small-step="5" data-large-step="10" data-bind="value: maxValue, events: { change: onChangeMaxValue }">
+            </div>
+            <div class="box-col radial-settings-button">
+                <button data-bind="click:toggleUpdateState" class="btn btn-primary">Start/Stop</button>
+            </div>
+        </div>
+
+    </div>
+    <div class="chart-block" data-bind="visible: linearGaugeIsVisible">
+        <h2>Linear</h2>
+    </div>
+</div>
+
+@section scripts
+{
+    <script type="text/javascript">
+        kendo.bind($("#data-viz-block"), kendo.observable(new DataVizViewModel));
+    </script>
+}
