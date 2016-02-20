@@ -83,9 +83,11 @@
     this.PointC = 0;
     this.limitReached = false;
     this.progressOnPause = false;
+    this.updateInProgress = false;
 
     this.startLinearProgress = function () {
         this.set("progressOnPause", false);
+        this.set('updateInProgress', false);
         updateProgressDataWorker(this);
     };
 
@@ -111,7 +113,7 @@
             success: function (data) {
                 setProgressData(that, data);
                 if (!that.limitReached && !that.progressOnPause) {
-                    setTimeout(function () { updateProgressDataWorker(that); }, 600);
+                    setTimeout(function () { updateProgressDataWorker(that); }, 500);
                 }
             },
             cache: false
@@ -119,19 +121,46 @@
     };
 
     function setProgressData(that, data) {
-        that.set('PointA', data.PointA);
-        that.set('PointB', data.PointB);
-        that.set('PointC', data.PointC);
         that.set('limitReached', data.LimitReached);
-        setProgressPoints(that)
+        if (!that.updateInProgress) {
+            that.set('updateInProgress', true);
+            setProgressPoints(that, data)
+        }
         
     };
 
-    function setProgressPoints(that) {
+    function setProgressPoints(that, data) {
+        if (that.progressOnPause)
+            return;
+
+        var diffA = data.PointA - that.PointA.toFixed(1);
+        var diffB = data.PointB - that.PointB.toFixed(1);
+        var diffC = data.PointC - that.PointC.toFixed(1);
+
+        if (diffA == 0 && diffB == 0 && diffC == 0) {
+            that.set('updateInProgress', false);
+            return;
+        }
+        if (diffA > 0) {
+            that.PointA = Number((that.PointA + 0.1).toFixed(1));
+        }
+
+        if (diffB > 0) {
+            that.PointB = Number((that.PointB + 0.1).toFixed(1));
+        }
+
+        if (diffC > 0) {
+            that.PointC = Number((that.PointC + 0.1).toFixed(1));
+        }
+
+        console.log("PontA: " + that.PointA + "  PontB: " + that.PointB + "  PontC: " + that.PointC)
+
         var gauge = $("#linear-progress").data("kendoLinearGauge");
         gauge.pointers[0].value(that.PointA);
         gauge.pointers[1].value(that.PointB);
         gauge.pointers[2].value(that.PointC);
+
+        setTimeout(function () { setProgressPoints(that, data); }, 50);
     };
 
     function setNullProgressPoints() {
@@ -140,8 +169,6 @@
         gauge.pointers[1].value(0);
         gauge.pointers[2].value(0);
     };
-
-
 
     function getProgressData(that) {
         return {
